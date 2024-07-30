@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countdown Clock</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: black;
             color: red;
-            font-family: 'Courier New', Courier, monospace;
+            font-family: 'Press Start 2P', cursive;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -20,14 +22,35 @@
             font-size: 3em;
         }
         #countdown {
-            font-size: 0.75em;
+            display: flex;
+            gap: 10px;
+            font-size: 3em;
+        }
+        .digit {
+            background-color: red;
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+            width: 50px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+        .digit span {
+            display: inline-block;
         }
     </style>
 </head>
 <body>
-    <div>
-        <h1>Countdown to November 5, 2024</h1>
-        <div id="countdown"></div>
+    <img src="path-to-your-logo-file.png" alt="Logo" class="logo">
+    <h1>Countdown to November 5, 2024</h1>
+    <div id="countdown">
+        <div class="digit"><span id="days"></span></div>
+        <div class="digit"><span id="hours"></span></div>
+        <div class="digit"><span id="minutes"></span></div>
+        <div class="digit"><span id="seconds"></span></div>
     </div>
 
     <script>
@@ -49,9 +72,11 @@
             var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Display the result in the element with id="countdown"
-            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-            + minutes + "m " + seconds + "s ";
+            // Display the result in the elements with id="days", "hours", "minutes", "seconds"
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
 
             // If the count down is over, write some text 
             if (distance < 0) {
@@ -62,3 +87,4 @@
     </script>
 </body>
 </html>
+
