@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countdown Clock</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Futura:wght@700&style=italic&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: black;
             color: red;
-            font-family: 'Press Start 2P', cursive;
+            font-family: 'Courier New', monospace;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -19,16 +19,19 @@
             text-align: center;
         }
         h1 {
-            font-size: 2em;
+            font-size: 2em; /* 32px equivalent */
+            font-family: 'Futura', sans-serif;
+            font-style: italic;
+            font-weight: bold;
         }
         #countdown {
             display: flex;
             gap: 10px;
-            font-size: .75em;
+            font-size: 12px; /* setting font size to 12px */
         }
         .digit {
-            background-color: black;
-            color: black;
+            background-color: black; /* no red background */
+            color: white; /* making text color white for visibility */
             padding: 10px;
             border-radius: 5px;
             width: 50px;
@@ -36,10 +39,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* white glow for visibility */
         }
         .digit span {
             display: inline-block;
+        }
+        .logo {
+            max-width: 200px; /* Adjust the size of the logo */
+            margin-bottom: 20px; /* Space between logo and heading */
         }
     </style>
 </head>
@@ -68,23 +75,5 @@
 
             // Time calculations for days, hours, minutes and seconds
             var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Display the result in the elements with id="days", "hours", "minutes", "seconds"
-            document.getElementById("days").innerText = days;
-            document.getElementById("hours").innerText = hours;
-            document.getElementById("minutes").innerText = minutes;
-            document.getElementById("seconds").innerText = seconds;
-
-            // If the count down is over, write some text 
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("countdown").innerHTML = "EXPIRED";
-            }
-        }, 1000);
-    </script>
-</body>
-</html>
+            var hours = Math.floor((distance % (1000 * 60 * 
 
