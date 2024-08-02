@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countdown Clock</title>
-    <link href="https://fonts.googleapis.com/css2?family=Futura:wght@700&style=italic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: black;
@@ -17,6 +17,9 @@
             height: 100vh;
             margin: 0;
             text-align: center;
+            background-image: url('https://www.example.com/your-scratch-texture.png'); /* URL to your texture image */
+            background-size: cover;
+            background-repeat: no-repeat;
         }
         h1 {
             font-size: 2em; /* 32px equivalent */
@@ -31,7 +34,7 @@
         }
         .digit {
             background-color: black; /* no red background */
-            color: white; /* making text color white for visibility */
+            color: red; /* making digits red */
             padding: 10px;
             border-radius: 5px;
             width: 50px;
@@ -39,19 +42,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* white glow for visibility */
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* red glow for visibility */
         }
         .digit span {
             display: inline-block;
         }
-        .logo {
-            max-width: 200px; /* Adjust the size of the logo */
-            margin-bottom: 20px; /* Space between logo and heading */
-        }
     </style>
 </head>
 <body>
-    <img src="path-to-your-logo-file.png" alt="Logo" class="logo">
     <h1>Countdown to November 5, 2024</h1>
     <div id="countdown">
         <div class="digit"><span id="days"></span></div>
@@ -75,5 +73,22 @@
 
             // Time calculations for days, hours, minutes and seconds
             var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+            // Display the result in the elements with id="days", "hours", "minutes", "seconds"
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+
+            // If the count down is over, write some text 
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
