@@ -4,60 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countdown Clock</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-        body, html {
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
+        body {
             background-color: black;
-        }
-        video {
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            min-width: 100%; 
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -100;
-            background-size: cover;
-        }
-        #content {
-            position: relative;
-            z-index: 100;
+            color: red;
+            font-family: 'Courier New', monospace;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            height: 100vh;
+            margin: 0;
             text-align: center;
-            height: 100%;
-            color: red;
-            font-family: 'Courier New', monospace;
+        }
+        #logo {
+            width: 300px;  /* Adjust width as necessary */
+            height: auto;  /* Maintain aspect ratio */
+            margin-bottom: 20px;  /* Space between logo and countdown */
         }
         h1 {
-            font-size: 2em; /* 32px equivalent */
-            font-family: 'Futura', sans-serif;
-            font-style: italic;
-            font-weight: bold;
+            font-size: 2em;
         }
         #countdown {
             display: flex;
             gap: 10px;
-            font-size: 12px; /* setting font size to 12px */
+            font-size: 12px;
         }
         .digit {
-            background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
-            color: red; /* making digits red */
-            padding: 10px;
+            background-color: black;
+            color: red;
+            padding: 8px;
             border-radius: 5px;
             width: 50px;
-            height: 70px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* red glow for visibility */
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
         }
         .digit span {
             display: inline-block;
@@ -65,18 +48,20 @@
     </style>
 </head>
 <body>
-    <video autoplay muted loop id="myVideo">
-        <source src="path-to-your-video.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-    </video>
-    <div id="content">
-        <h1>Nov 5th, 2024</h1> <!-- Updated header text -->
-        <div id="countdown">
-            <div class="digit"><span id="days"></span></div>
-            <div class="digit"><span id="hours"></span></div>
-            <div class="digit"><span id="minutes"></span></div>
-            <div class="digit"><span id="seconds"></span></div>
-        </div>
+    <!-- SVG Logo -->
+    <div id="logo">
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+        <svg width="100%" height="100%" viewBox="0 0 4238 1521" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+            <!-- SVG content here -->
+        </svg>
+    </div>
+    <h1>November 5th, 2024</h1>
+    <div id="countdown">
+        <div class="digit"><span id="days"></span> Days</div>
+        <div class="digit"><span id="hours"></span> Hours</div>
+        <div class="digit"><span id="minutes"></span> Minutes</div>
+        <div class="digit"><span id="seconds"></span> Seconds</div>
     </div>
 
     <script>
@@ -85,7 +70,6 @@
 
         // Update the count down every 1 second
         var x = setInterval(function() {
-
             // Get today's date and time
             var now = new Date().getTime();
 
@@ -113,4 +97,5 @@
     </script>
 </body>
 </html>
+
 
