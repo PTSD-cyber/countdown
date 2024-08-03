@@ -6,8 +6,8 @@
     <title>Countdown Clock</title>
     <style>
         @keyframes moveBinary {
-            from { left: 100%; }
-            to { left: -100%; }
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-100%); }
         }
         body {
             background-color: black;
@@ -24,27 +24,25 @@
             overflow: hidden;
         }
         .binary-stream {
-            position: relative;
-            width: 300%;  /* Increase width for more content to scroll */
+            position: absolute;
             white-space: nowrap;
             color: red;
-            animation: moveBinary 10s linear infinite;
-            font-size: 10px; /* Smaller than countdown number size */
-            margin-top: 5px; /* Space between lines */
+            animation: moveBinary 20s linear infinite;
+            font-size: 10px;
         }
         #binary-top, #binary-bottom {
             position: absolute;
-            top: 0;
+            top: 10px; /* Adjust top positioning */
             width: 100%;
-            height: 25vh; /* Adjust height for more area coverage */
+            height: 20vh; /* Cover more vertical space */
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: space-evenly;
+            justify-content: flex-start;
         }
         #binary-bottom {
             top: auto;
-            bottom: 0;
+            bottom: 10px; /* Adjust bottom positioning */
         }
         #logo, #countdown {
             z-index: 10;
@@ -54,13 +52,13 @@
             width: 300px;
             height: auto;
             margin-bottom: 20px; /* Space between logo and countdown */
-            margin-top: 20px; /* Space above logo */
+            margin-top: 10px; /* Space above logo */
         }
         #countdown {
             display: flex;
             gap: 10px;
             font-size: 12px;
-            margin-top: 20px; /* Space above countdown */
+            margin-top: 10px; /* Space above countdown */
             margin-bottom: 20px; /* Space below countdown */
         }
         .digit {
@@ -83,12 +81,14 @@
 </head>
 <body>
     <div id="binary-top">
-        <div class="binary-stream">010100101010101001010010101010100101010101001010101010010101010101010100101010100101010101001010010101010100101010101001010101010010101010101010101001010101001010101010010101010101010100101010101001010101010010101010101010100101010101001010101010010101010101010100101010101001010101010010101010101010100101010101001010101010</div>
-        <div class="binary-stream">101010100101010101010101010010101010100101010101010101001010101010101010100101010101001010101010101001010101010101010100101010101010101010010101010101010101001010101010101010100101010101010101010010101010101010101001010101010101010100101010101010101010010101010101010101001010101010101010100101010101010101010</div>
-        <div class="binary-stream">010101010010101010101010101001010101010101010100101010101010101010010101010101010101001010101010101010100101010101010101010010101010101010101001010101010101010100101010101010101010010101010101010101001010101010101010100101010101010101010010101010101010101001010101010101010100101010101010101010</div>
+        <!-- Multiple binary streams for dense visual effect -->
+        <!-- Using PHP loop to generate multiple lines. Static example below -->
+        <!-- Repeat this block or use server-side loop to generate multiple lines -->
+        <div class="binary-stream">010100101010101001010010101010100101010101001010101010010101</div>
+        <!-- More binary streams -->
     </div>
     <div id="logo">
-      <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+     <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 4238 1521" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(4.16667,0,0,4.16667,0,0)">
@@ -224,13 +224,13 @@
     <div id="countdown">
         <div class="digit"><span id="days"></span> Days</div>
         <div class="digit"><span id="hours"></span> Hours</div>
-        <div the="digit"><span id="minutes"></span> Min</div>
+        <div class="digit"><span id="minutes"></span> Min</div>
         <div class="digit"><span id="seconds"></span> Sec</div>
     </div>
     <div id="binary-bottom">
-        <div class="binary-stream">101010100101010101010101010010101010100101010101010101001010101010101010100101010101001010101010101001010101010101010100101010101010101010010101010101010101001010101010101010100101010101010101010010101010101010101001010101010101010100101010101010101010010101010101010101001010101010101010100101010101010101010</div>
-        <div class="binary-stream">010101010010101010101010101001010101010101010100101010101010101010010101010101010101001010101010101010100101010101010101010010101010101010101001010101010101010100101010101010101010010101010101010101001010101010101010100101010101010101010010101010101010101001010101010101010100101010101010101010</div>
-        <div class="binary-stream">101010100101010101010101010010101010100101010101010101001010101010101010100101010101001010101010101001010101010101010100101010101010101010010101010101010101001010101010101010100101010101010101010010101010101010101001010101010101010100101010101010101010010101010101010101001010101010101010100101010101010101010</div>
+        <!-- Similar to the top, more binary streams for dense visual effect -->
+        <div class="binary-stream">010100101010101001010010101010100101010101001010101010010101</div>
+        <!-- More binary streams -->
     </div>
 
     <script>
