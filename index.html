@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countdown Clock</title>
     <style>
-        @keyframes moveBinary {
-            from { transform: translateX(100%); }
-            to { transform: translateX(-100%); }
-        }
         body {
             background-color: black;
             color: red;
@@ -20,44 +16,27 @@
             height: 100vh;
             margin: 0;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .binary-stream {
-            position: absolute;
-            width: 200%; /* ensure it covers the full width even when moving */
-            top: 40px; /* Adjust the vertical position here */
-            white-space: nowrap;
-            overflow: hidden;
-            font-size: 10px; /* smaller font size for binary */
-            color: red;
-            animation: moveBinary 10s linear infinite;
-        }
-        #binary-bottom {
-            top: auto;
-            bottom: 40px; /* Adjust the vertical position from bottom */
-        }
-        #logo, #countdown {
-            z-index: 10;
-            position: relative;
         }
         #logo {
-            width: 300px;
-            height: auto;
-            margin-bottom: 20px;
+            width: 300px;  /* Adjust width as necessary */
+            height: auto;  /* Maintain aspect ratio */
+            margin-bottom: 20px;  /* Space between logo and countdown */
+        }
+        h1 {
+            font-size: 2em;
         }
         #countdown {
             display: flex;
             gap: 10px;
-            font-size: 48px; /* larger font size for the countdown */
+            font-size: 12px;
         }
         .digit {
             background-color: black;
             color: red;
             padding: 10px;
             border-radius: 5px;
-            width: 60px; /* wider to accommodate larger numbers */
-            height: 80px; /* taller for better visibility */
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -70,9 +49,12 @@
     </style>
 </head>
 <body>
-    <div class="binary-stream" id="binary-top">0101001010101010010100101010101001010101010010101010100101010101</div>
+    <!-- SVG Logo -->
     <div id="logo">
-       <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+        <svg width="100%" height="100%" viewBox="0 0 4238 1521" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+            <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 4238 1521" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(4.16667,0,0,4.16667,0,0)">
@@ -204,6 +186,7 @@
         </g>
     </g>
 </svg>
+        </svg>
     </div>
     <div id="countdown">
         <div class="digit"><span id="days"></span> Days</div>
@@ -211,7 +194,6 @@
         <div class="digit"><span id="minutes"></span> Min</div>
         <div class="digit"><span id="seconds"></span> Sec</div>
     </div>
-    <div class="binary-stream" id="binary-bottom">0101001010101010010100101010101001010101010010101010100101010101</div>
 
     <script>
         // Set the date we're counting down to
@@ -225,7 +207,7 @@
             // Find the distance between now and the count down date
             var distance = countDownDate - now;
 
-            // Time calculations for days, hours, minutes, and seconds
+            // Time calculations for days, hours, minutes and seconds
             var days = Math.floor(distance / (1000 * 60 * 60 * 24));
             var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -237,7 +219,7 @@
             document.getElementById("minutes").innerText = minutes;
             document.getElementById("seconds").innerText = seconds;
 
-            // If the count down is over, write some text
+            // If the count down is over, write some text 
             if (distance < 0) {
                 clearInterval(x);
                 document.getElementById("countdown").innerHTML = "EXPIRED";
@@ -246,7 +228,6 @@
     </script>
 </body>
 </html>
-
 
 
 
