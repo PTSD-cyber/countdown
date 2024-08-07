@@ -57,22 +57,23 @@
             height: 10px;
             border-radius: 50%;
             background-color: red;
-            box-shadow: 0 0 10px rgba(255, 0, 0, 1);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 1);
             cursor: pointer;
         }
         #video-button.glow {
             animation: glowing 1.5s infinite;
         }
         @keyframes glowing {
-            0% { box-shadow: 0 0 5px rgba(255, 0, 0, 0.8); }
-            50% { box-shadow: 0 0 20px rgba(255, 0, 0, 1); }
-            100% { box-shadow: 0 0 5px rgba(255, 0, 0, 0.8); }
+            0% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.8); }
+            50% { box-shadow: 0 0 30px rgba(255, 0, 0, 1); }
+            100% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.8); }
         }
         #video-player {
             display: none;
             margin-top: 20px;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
             animation: tvOn 0.5s forwards;
+            transform: scale(1.5);
         }
         @keyframes tvOn {
             0% {
@@ -80,7 +81,7 @@
                 opacity: 0;
             }
             100% {
-                transform: scale(1);
+                transform: scale(1.5);
                 opacity: 1;
             }
         }
@@ -103,7 +104,7 @@
         <div id="video-button" class="glow"></div>
     </div>
     <div id="video-player">
-        <video width="400" controls>
+        <video width="600" controls>
             <source src="your-video-file.mp4" type="video/mp4">
             Your browser does not support HTML5 video.
         </video>
@@ -144,10 +145,11 @@
         document.getElementById("video-button").onclick = function() {
             var videoPlayer = document.getElementById("video-player");
             videoPlayer.style.display = "block";
-            videoPlayer.classList.add('animate');
         };
     </script>
 </body>
+</html>
+
 </html>
 
 
