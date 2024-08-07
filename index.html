@@ -82,6 +82,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
         }
         @keyframes tvOn {
             0% {
@@ -112,28 +113,20 @@
             border-radius: 50%;
             box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
         }
-        video::-webkit-media-controls {
-            display: none !important;
-        }
         #play-button {
             width: 50px;
             height: 50px;
+            background-color: black;
+            color: red;
+            font-size: 24px;
+            text-align: center;
+            line-height: 50px;
             border-radius: 50%;
-            background-color: red;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 1);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
         }
-        #play-button::before {
-            content: '';
-            display: block;
-            width: 0;
-            height: 0;
-            border-left: 15px solid black;
-            border-top: 10px solid transparent;
-            border-bottom: 10px solid transparent;
+        video::-webkit-media-controls {
+            display: none !important;
         }
     </style>
 </head>
@@ -151,17 +144,16 @@
             <div class="digit"><span id="minutes"></span> Min</div>
             <div class="digit"><span id="seconds"></span> Sec</div>
         </div>
-        <div id="video-button" class="glow">
-            <div id="play-button"></div>
-        </div>
+        <div id="video-button" class="glow"></div>
     </div>
     <div id="video-player">
         <div id="close-button">X</div>
-        <video controls>
+        <video id="video-element">
             <!-- Add your video file here -->
             <source src="your-video-file.mp4" type="video/mp4">
             Your browser does not support HTML5 video.
         </video>
+        <div id="play-button">►</div>
     </div>
 
     <script>
@@ -205,6 +197,20 @@
         document.getElementById("close-button").onclick = function() {
             var videoPlayer = document.getElementById("video-player");
             videoPlayer.style.display = "none";
+            document.getElementById("video-element").pause();
+            document.getElementById("video-element").currentTime = 0;
+        };
+
+        // Play button click event
+        document.getElementById("play-button").onclick = function() {
+            var videoElement = document.getElementById("video-element");
+            videoElement.play();
+            this.style.display = "none";
+        };
+
+        // Show play button when video ends
+        document.getElementById("video-element").onended = function() {
+            document.getElementById("play-button").style.display = "block";
         };
     </script>
 </body>
