@@ -52,12 +52,12 @@
             margin-right: 3px;
         }
         #video-button {
-            margin-left: 10px;
-            width: 15px;
-            height: 15px;
+            margin-left: 20px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background-color: red;
-            box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 1);
             cursor: pointer;
         }
         #video-button.glow {
@@ -72,13 +72,23 @@
             display: none;
             margin-top: 20px;
             box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+            animation: tvOn 0.5s forwards;
+        }
+        @keyframes tvOn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
     <div id="logo">
-        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+        <!-- Your SVG logo content -->
         <svg width="100%" height="100%" viewBox="0 0 4238 1521" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
             <!-- SVG content here -->
         </svg>
@@ -133,13 +143,11 @@
         // Video button click event
         document.getElementById("video-button").onclick = function() {
             var videoPlayer = document.getElementById("video-player");
-            if (videoPlayer.style.display === "none") {
-                videoPlayer.style.display = "block";
-            } else {
-                videoPlayer.style.display = "none";
-            }
+            videoPlayer.style.display = "block";
+            videoPlayer.classList.add('animate');
         };
     </script>
 </body>
 </html>
+
 
